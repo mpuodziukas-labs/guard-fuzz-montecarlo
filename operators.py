@@ -11,8 +11,8 @@ import random
 
 import seeds
 
-ZERO_WIDTH = ("​", "‌", "‍", "⁠")
-HOMOGLYPH = {"a": "а", "e": "е", "o": "о", "p": "р", "c": "с", "x": "х", "y": "у", "i": "і"}
+ZERO_WIDTH = ("\u200b", "\u200c", "\u200d", "\u2060")
+HOMOGLYPH = {"a": "\u0430", "e": "\u0435", "o": "\u043e", "p": "\u0440", "c": "\u0441", "x": "\u0445", "y": "\u0443", "i": "\u0456"}
 PUNCT = (",", ".", ";", ":", "-", "_")
 SYNONYMS = (
     ("ignore", "disregard"), ("previous", "prior"), ("instructions", "directions"), ("reveal", "disclose"),

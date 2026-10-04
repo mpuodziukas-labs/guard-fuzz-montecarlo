@@ -22,7 +22,7 @@ The three guard repos must sit side by side under `~/proof-artifacts` (or set `G
 This block is the exact content of `results-default.txt`. A test fails if the README drifts from it.
 
 ```
-guard-fuzz-montecarlo seed=mcfuzz-v1-20261004 attack_n=400 benign_n=200 manifest=97523b031efe
+guard-fuzz-montecarlo seed=mcfuzz-v1-20261004 attack_n=400 benign_n=200 manifest=df5b729ff7fc
 
 == firewall (context-injection-firewall) ==
 unmutated seeds: attacks not flagged 5/15, benign flagged 0/12
@@ -123,19 +123,19 @@ top operator pairs by bypass rate (n per pair is small, read the interval)
   none: no mutated attack variant got through
 ```
 
-The full run (N = 2000 per guard) is in `results-full.txt`. Headline numbers from it:
+The full run (N = 2000 per guard) is in `results-full.txt`. Recorded against guard commits 07c70d2 (firewall), 7b02384 (router) and 0a3229f (attest). Headline numbers from it:
 
 | guard | bypass rate | false alarm rate | top solo operators by bypass rate |
 |---|---|---|---|
 | firewall | 887/2000 0.444 [0.422,0.465] | 228/1000 0.228 [0.203,0.255] | hex_wrap 0.758, b64_wrap 0.692, split_lines 0.549 |
-| router | 1017/2000 0.508 [0.487,0.530] | 1/1000 0.001 [0.000,0.006] | hex_wrap 1.000, case_change 0.857, zero_width 0.735 |
-| attest | 0/2000 0.000 [0.000,0.002] | 164/1000 0.164 [0.142,0.188] | none: no operator produced a bypass |
+| router | 606/2000 0.303 [0.283,0.324] | 1/1000 0.001 [0.000,0.006] | homoglyph 0.518, hex_wrap 0.373, ws_insert 0.369 |
+| attest | 0/2000 0.000 [0.000,0.002] | 316/1000 0.316 [0.288,0.345] | none: no operator produced a bypass |
 
 How to read it:
 
 - The firewall misses encoded payloads (hex and base64 wrapping) most of the time. Its false alarms come almost entirely from the zero_width and homoglyph operators, which it flags on every benign text. Flagging invisible and look-alike characters is arguably correct, so this number is a statement about those operators, not proof of a defect.
-- The router catches clean secrets and personal data, but a hex wrapper gets every attack through and case changes get most through. Its false alarm rate is near zero.
-- The attest verifier let nothing through in 2000 tries. Its false alarms are almost all the hex_case operator (upper-casing the signature hex), which is not a meaning-preserving change for a valid transcript, so that operator is an unfair mutation and is reported as such rather than hidden.
+- The router catches clean secrets and personal data, but look-alike characters get about half of the attacks through and a hex wrapper gets more than a third through. Its false alarm rate is near zero.
+- The attest verifier let nothing through in 2000 tries. Every solo false alarm comes from two operators, hex_case (upper-casing the signature hex) and extra_fields, which flag on every benign variant. Neither is a meaning-preserving change for a valid transcript, so both are unfair mutations and are reported as such rather than hidden.
 
 ## Method
 
@@ -188,6 +188,7 @@ mutants killed 8/8
 - A bypass rate here is a rate over this operator set. A guard with 0 bypasses (attest) is not shown to be safe, only to resist these operators.
 - Operator pairs have small n per pair at the default size. Read the interval, not the point value.
 - The guards were tested in the versions found on the machine at run time. Results can change when a guard changes.
+- `operators.py` and `seeds.py` were re-encoded to ASCII escapes after the frozen run; a value-identity dump (cmp) and a re-run with identical numbers prove nothing changed.
 
 ## CI
 

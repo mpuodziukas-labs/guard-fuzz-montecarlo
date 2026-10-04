@@ -1,4 +1,4 @@
-guard-fuzz-montecarlo seed=mcfuzz-v1-20261004 attack_n=400 benign_n=200 manifest=97523b031efe
+guard-fuzz-montecarlo seed=mcfuzz-v1-20261004 attack_n=400 benign_n=200 manifest=df5b729ff7fc
 
 == firewall (context-injection-firewall) ==
 unmutated seeds: attacks not flagged 5/15, benign flagged 0/12
