@@ -50,7 +50,7 @@ def test_operator_does_not_mutate_its_argument(guard, name):
 
 def test_zero_width_inserts_invisible_characters():
     out = operators.OPS["firewall"]["zero_width"](TEXT_PROBE, random.Random(1))
-    assert any(c in out for c in "​‌‍⁠")
+    assert any(c in out for c in "\u200b\u200c\u200d\u2060")
 
 
 def test_attest_operators_keep_a_valid_transcript_renderable():

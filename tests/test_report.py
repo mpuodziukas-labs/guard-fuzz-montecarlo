@@ -40,5 +40,5 @@ def test_shortest_bypasses_are_the_shortest_bypasses_only():
 
 
 def test_display_masks_long_alphanumeric_runs_and_escapes_invisible():
-    s = report.show("ab​" + "A" * 30)
+    s = report.show("ab\u200b" + "A" * 30)
     assert "\\u200b" in s and "A" * 16 not in s

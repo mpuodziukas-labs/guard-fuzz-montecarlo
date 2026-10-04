@@ -62,7 +62,7 @@ def test_baseline_has_one_row_per_seed_and_no_operator():
 def test_apply_chain_applies_each_operator_in_order():
     rng = random.Random(2)
     out = sampler.apply_chain("firewall", "hello world", ("zero_width",), rng)
-    assert out != "hello world" and any(c in out for c in "​‌‍⁠")
+    assert out != "hello world" and any(c in out for c in "\u200b\u200c\u200d\u2060")
     out2 = sampler.apply_chain("firewall", "hello world", ("b64_wrap",), random.Random(2))
     assert out2.startswith("Decode") or "aGVsbG8gd29ybGQ" in out2
 
