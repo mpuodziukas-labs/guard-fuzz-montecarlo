@@ -1,0 +1,80 @@
+Saved RED run: the test suite run against empty stubs before any implementation existed.
+Trimmed to the failing test names and the final count; the home path was removed.
+
+FAILED tests/test_guards.py::test_bucket_clean_attack_is_a_bypass - Assertion...
+FAILED tests/test_guards.py::test_bucket_error_is_never_caught_and_never_a_bypass
+FAILED tests/test_guards.py::test_bucket_benign - AssertionError: assert 'cau...
+FAILED tests/test_guards.py::test_interpret_firewall[1-{"input": "f", "verdict": "QUARANTINE", "reason": "override", "offset": 0, "findings": []}\n-FLAGGED]
+FAILED tests/test_guards.py::test_interpret_firewall[2-{"input": "f", "verdict": "BLOCK", "reason": "override", "offset": 0, "findings": []}\n-FLAGGED]
+FAILED tests/test_guards.py::test_interpret_firewall[1--ERROR] - AssertionErr...
+FAILED tests/test_guards.py::test_interpret_firewall[0--ERROR] - AssertionErr...
+FAILED tests/test_guards.py::test_interpret_firewall[3-{"input": "f", "verdict": "BLOCK", "reason": "override", "offset": 0, "findings": []}\n-ERROR]
+FAILED tests/test_guards.py::test_interpret_firewall[0-{"input": "f", "verdict": "BLOCK", "reason": "override", "offset": 0, "findings": []}\n-ERROR]
+FAILED tests/test_guards.py::test_interpret_firewall[2-not json-ERROR] - Asse...
+FAILED tests/test_guards.py::test_interpret_router[0-{"class": "pii", "destination": "local", "rule": "pii-ssn"}-FLAGGED]
+FAILED tests/test_guards.py::test_interpret_router[3-{"class": "pii", "destination": "refused", "rule": "pii-ssn"}-FLAGGED]
+FAILED tests/test_guards.py::test_interpret_router[0--ERROR] - AssertionError...
+FAILED tests/test_guards.py::test_interpret_router[1-{"destination": "cloud"}-ERROR]
+FAILED tests/test_guards.py::test_interpret_router[0-{"destination": "mars"}-ERROR]
+FAILED tests/test_guards.py::test_interpret_attest[1-ACCEPT line 2 call=c1 accepted\nREJECT line 3 call=c1 replay\n--FLAGGED]
+FAILED tests/test_guards.py::test_interpret_attest[2--cannot read file-FLAGGED]
+FAILED tests/test_guards.py::test_interpret_attest[1--Traceback (most recent call last):\n-ERROR]
+FAILED tests/test_guards.py::test_interpret_attest[2--Traceback (most recent call last):\n-ERROR]
+FAILED tests/test_guards.py::test_interpret_attest[0---ERROR] - AssertionErro...
+FAILED tests/test_guards.py::test_interpret_attest[9---ERROR] - AssertionErro...
+FAILED tests/test_guards.py::test_a_guard_crash_is_an_error_not_caught_not_bypass
+FAILED tests/test_guards.py::test_a_guard_timeout_is_an_error - AssertionErro...
+FAILED tests/test_guards.py::test_a_missing_guard_binary_is_an_error - Assert...
+FAILED tests/test_guards.py::test_a_flagging_guard_is_flagged - AssertionErro...
+FAILED tests/test_manifest.py::test_manifest_lists_every_frozen_file_with_its_current_hash
+FAILED tests/test_operators.py::test_operator_changes_the_input[firewall-case_change]
+FAILED tests/test_operators.py::test_operator_changes_the_input[firewall-ws_insert]
+FAILED tests/test_operators.py::test_operator_changes_the_input[firewall-punct_insert]
+FAILED tests/test_operators.py::test_operator_changes_the_input[firewall-synonym_swap]
+FAILED tests/test_operators.py::test_operator_changes_the_input[firewall-homoglyph]
+FAILED tests/test_operators.py::test_operator_changes_the_input[firewall-zero_width]
+FAILED tests/test_operators.py::test_operator_changes_the_input[firewall-split_lines]
+FAILED tests/test_operators.py::test_operator_changes_the_input[firewall-b64_wrap]
+FAILED tests/test_operators.py::test_operator_changes_the_input[firewall-hex_wrap]
+FAILED tests/test_operators.py::test_operator_changes_the_input[firewall-paraphrase]
+FAILED tests/test_operators.py::test_operator_changes_the_input[firewall-embed_benign]
+FAILED tests/test_operators.py::test_operator_changes_the_input[router-case_change]
+FAILED tests/test_operators.py::test_operator_changes_the_input[router-ws_insert]
+FAILED tests/test_operators.py::test_operator_changes_the_input[router-punct_insert]
+FAILED tests/test_operators.py::test_operator_changes_the_input[router-synonym_swap]
+FAILED tests/test_operators.py::test_operator_changes_the_input[router-homoglyph]
+FAILED tests/test_operators.py::test_operator_changes_the_input[router-zero_width]
+FAILED tests/test_operators.py::test_operator_changes_the_input[router-split_lines]
+FAILED tests/test_operators.py::test_operator_changes_the_input[router-b64_wrap]
+FAILED tests/test_operators.py::test_operator_changes_the_input[router-hex_wrap]
+FAILED tests/test_operators.py::test_operator_changes_the_input[router-paraphrase]
+FAILED tests/test_operators.py::test_operator_changes_the_input[router-embed_benign]
+FAILED tests/test_operators.py::test_operator_changes_the_input[router-split_turns]
+FAILED tests/test_operators.py::test_operator_changes_the_input[attest-key_reorder]
+FAILED tests/test_operators.py::test_operator_changes_the_input[attest-ts_jitter]
+FAILED tests/test_operators.py::test_operator_changes_the_input[attest-json_spacing]
+FAILED tests/test_operators.py::test_operator_changes_the_input[attest-unicode_escape]
+FAILED tests/test_operators.py::test_operator_changes_the_input[attest-blank_lines]
+FAILED tests/test_operators.py::test_operator_changes_the_input[attest-crlf]
+FAILED tests/test_operators.py::test_operator_changes_the_input[attest-interleave_turns]
+FAILED tests/test_operators.py::test_operator_changes_the_input[attest-extra_fields]
+FAILED tests/test_operators.py::test_operator_changes_the_input[attest-hex_case]
+FAILED tests/test_operators.py::test_zero_width_inserts_invisible_characters
+FAILED tests/test_operators.py::test_attest_operators_keep_a_valid_transcript_renderable
+FAILED tests/test_report.py::test_tally_counts_errors_separately_and_out_of_the_denominator
+FAILED tests/test_report.py::test_tally_benign - KeyError: 'false_alarm'
+FAILED tests/test_report.py::test_operator_rates_use_solo_and_any_chain - Key...
+FAILED tests/test_report.py::test_shortest_bypasses_are_the_shortest_bypasses_only
+FAILED tests/test_report.py::test_display_masks_long_alphanumeric_runs_and_escapes_invisible
+FAILED tests/test_sampler.py::test_other_seed_gives_other_variants - assert [...
+FAILED tests/test_sampler.py::test_count_and_labels - assert (0 == 40)
+FAILED tests/test_sampler.py::test_every_operator_is_sampled_solo_and_in_pairs
+FAILED tests/test_sampler.py::test_split_turns_is_always_last - assert False
+FAILED tests/test_sampler.py::test_baseline_has_one_row_per_seed_and_no_operator
+FAILED tests/test_sampler.py::test_apply_chain_applies_each_operator_in_order
+FAILED tests/test_sampler.py::test_render_router_splits_turns - json.decoder....
+FAILED tests/test_stats.py::test_wilson_half - assert (False)
+FAILED tests/test_stats.py::test_wilson_zero_successes - assert (0.0 == 0.0 a...
+FAILED tests/test_stats.py::test_wilson_all_successes - assert (False)
+FAILED tests/test_stats.py::test_wilson_narrows_with_n - assert (1.0 - 0.0) <...
+76 failed, 75 passed, 2 skipped in 0.21s
