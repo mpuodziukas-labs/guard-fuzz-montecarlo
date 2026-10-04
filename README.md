@@ -1,5 +1,7 @@
 # guard-fuzz-montecarlo
 
+Proves: black-box fuzzing turns the pass/fail of three AI guards into a bypass rate with a 95% Wilson interval per guard and per mutation operator. Verify in about 15 s: `./run.sh`
+
 A security team scores its AI guards on a hand-written test set, so a perfect pass says nothing about how often a lightly reworded or encoded attack still gets through. This repo fuzzes three guards from outside, turns pass/fail into a bypass rate with a 95% Wilson interval per guard and per mutation operator, and ranks the operators.
 
 The guards are treated as black boxes and are driven by command line only: `context-injection-firewall` (`python3 scanner.py FILE`), `sensitivity-egress-router` (`python3 router.py`, message list on stdin) and `attested-tool-results` (`python3 -m attest verify FILE`). Their source is never opened, edited or tuned.
