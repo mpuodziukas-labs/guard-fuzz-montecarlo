@@ -15,7 +15,7 @@ python3 evaluate.py --full        # the full run, 2000 attack variants per guard
 python3 evaluate.py --full --record   # rewrite results-full.txt
 ```
 
-The three guard repos must sit side by side under `~/proof-artifacts` (or set `GUARD_ROOT`). Set `PY` to choose the interpreter. The recorded default run is reproduced byte for byte because the seed, the seed corpus and the operators are frozen.
+The three guard repos must sit side by side in one folder, next to this repo (or set `GUARD_ROOT`). Set `PY` to choose the interpreter. The recorded default run is reproduced byte for byte because the seed, the seed corpus and the operators are frozen.
 
 ## Output of the default run
 

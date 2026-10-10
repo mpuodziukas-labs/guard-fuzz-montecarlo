@@ -10,7 +10,7 @@ from dataclasses import dataclass
 import config
 import sampler
 
-GUARD_ROOT = pathlib.Path(os.environ.get("GUARD_ROOT", pathlib.Path.home() / "proof-artifacts"))
+GUARD_ROOT = pathlib.Path(os.environ.get("GUARD_ROOT", pathlib.Path(__file__).resolve().parent.parent))
 REPOS = {"firewall": "context-injection-firewall", "router": "sensitivity-egress-router", "attest": "attested-tool-results"}
 PY = os.environ.get("GUARD_PY", sys.executable)
 

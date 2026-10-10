@@ -1,6 +1,6 @@
 #!/bin/bash
 # One command: reproduce the recorded default run, run the offline tests, run the mutants.
-# The three guard repos must sit under GUARD_ROOT (default ~/proof-artifacts) for the fuzz step.
+# The three guard repos must sit under GUARD_ROOT (default: the folder that holds this repo) for the fuzz step.
 set -euo pipefail
 cd "$(dirname "$0")"
 PY="${PY:-python3}"
