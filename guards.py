@@ -10,7 +10,8 @@ from dataclasses import dataclass
 import config
 import sampler
 
-GUARD_ROOT = pathlib.Path(os.environ.get("GUARD_ROOT", pathlib.Path(__file__).resolve().parent.parent))
+_HERE = pathlib.Path(__file__).resolve().parent.parent   # sibling checkout first, then the home default
+GUARD_ROOT = pathlib.Path(os.environ.get("GUARD_ROOT") or next((p for p in (_HERE, pathlib.Path.home() / "proof-artifacts") if (p / "llm-adversarial-gate").is_dir()), _HERE))
 REPOS = {"firewall": "context-injection-firewall", "router": "sensitivity-egress-router", "attest": "attested-tool-results"}
 PY = os.environ.get("GUARD_PY", sys.executable)
 
